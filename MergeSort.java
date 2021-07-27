@@ -21,7 +21,7 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 			sort(array, leftIndex, middle);
 			sort(array, middle + 1, rightIndex);
 
-			merge(array, leftIndex, middle, rightIndex);
+			array = merge(array, leftIndex, middle, rightIndex);
 		}
 
 	}
@@ -31,9 +31,9 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 		T[] result = (T[]) new Comparable[array.length];
 
 		// esta primeira parte é responsabilizada por criar um array auxiliar que está entre os índices laterais
-		int[] helper = new int[array.length];
+//		int[] helper = new int[array.length];
 		for(int i = left; i <= right; i++) {
-			helper[i] = (int) array[i]; 
+			result[i] = array[i]; 
 		}
 
 		int i = left;
@@ -43,13 +43,13 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 		// é responsável pela rotina do merge de fato, une os dois arrays em um ordenado
 		while ( i <= middle && j <= right ){
 
-			if (helper[i] < helper[j]) {
+			if (result[i].compareTo(result[j]) < 0) {
 
-				helper[i] = (int) array[k];
+				array[k] = result[i];
 				i++;
 
 			} else {
-				helper[j] = (int) array[k];
+				array[k] = result[j];
 				j++;
 			}
 			k++;
@@ -58,14 +58,14 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 		// faz o append para o caso da metade inicial não ter sido toda consumida
 		while (i <= middle){
-			helper[i] = (int) array[k];
+			array[k] = result[i];
 			i++;
 			k++;
 		}
 
 		// faz o append da metade final, para o caso desta não ter sido toda consumida ainda
 		while (j <= right) {
-			helper[j] = (int) array[k];
+			array[k] = result[j];
 			j++;
 			k++;
 		}
