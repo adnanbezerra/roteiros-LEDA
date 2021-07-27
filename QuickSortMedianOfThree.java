@@ -19,8 +19,35 @@ import sorting.AbstractSorting;
 public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 		AbstractSorting<T> {
 
-	public void sort(T[] array, int leftIndex, int rightIndex) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
-	}
+			@Override
+			public void sort(T[] array, int leftIndex, int rightIndex) {
+				if (array.length == 1)
+					return;
+		
+				if (leftIndex < rightIndex){
+					int index_pivot = partition (array, leftIndex, rightIndex);
+					sort(array, leftIndex, index_pivot - 1);
+					sort(array, index_pivot + 1, rightIndex);
+				}
+		
+			}
+		
+			private int partition (T[] values, int leftIndex, int rightIndex) {
+		
+				int pivot = (int) values[leftIndex];
+				int i = leftIndex;
+		
+				// parte responsável por fazer as comparações dentro do array
+				for (int j = leftIndex + 1; j <= rightIndex; j++){
+					if ( (int) values[j] <= pivot){
+						i++;
+						swap(values, i, j);
+					}
+				}
+		
+				// realiza a troca entre o pivot e o último índice
+				swap(values, leftIndex, i);
+		
+				return i;
+			}
 }
