@@ -19,35 +19,34 @@ import sorting.AbstractSorting;
 public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 		AbstractSorting<T> {
 
-			@Override
-			public void sort(T[] array, int leftIndex, int rightIndex) {
-				if (array.length == 1)
-					return;
+	@Override
+	public void sort(T[] array, int leftIndex, int rightIndex) {
+		if (array.length == 1)
+			return;
+	
+		if (leftIndex < rightIndex){
+			int index_pivot = partition (array, leftIndex, rightIndex);
+			sort(array, leftIndex, index_pivot - 1);
+			sort(array, index_pivot + 1, rightIndex);
+		}
 		
-				if (leftIndex < rightIndex){
-					int index_pivot = partition (array, leftIndex, rightIndex);
-					sort(array, leftIndex, index_pivot - 1);
-					sort(array, index_pivot + 1, rightIndex);
-				}
+	}
 		
+	private int partition (T[] values, int leftIndex, int rightIndex) {
+	
+		int pivot = (int) values[leftIndex];
+		int i = leftIndex;
+		
+		// parte responsável por fazer as comparações dentro do array
+		for (int j = leftIndex + 1; j <= rightIndex; j++){
+			if ( (int) values[j] <= pivot){
+				i++;
+				swap(values, i, j);
 			}
+		}
 		
-			private int partition (T[] values, int leftIndex, int rightIndex) {
+		// realiza a troca entre o pivot e o último índice
+		swap(values, leftIndex, i);
 		
-				int pivot = (int) values[leftIndex];
-				int i = leftIndex;
-		
-				// parte responsável por fazer as comparações dentro do array
-				for (int j = leftIndex + 1; j <= rightIndex; j++){
-					if ( (int) values[j] <= pivot){
-						i++;
-						swap(values, i, j);
-					}
-				}
-		
-				// realiza a troca entre o pivot e o último índice
-				swap(values, leftIndex, i);
-		
-				return i;
-			}
-}
+		return i;
+	}
