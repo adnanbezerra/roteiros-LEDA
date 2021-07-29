@@ -44,7 +44,7 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends AbstractSor
 		swap(values, pivot, rightIndex - 1);
 		
 		// parte responsável por fazer as comparações dentro do vetor menor, de values[left+1] até A[right-1]
-		for (int j = rightIndex - 2; j >= leftIndex + 1; j--){
+		for (int j = i - 1; j >= leftIndex + 1; j--){
 			if (values[j].compareTo(values[pivot]) >= 0){
 				i--;
 				swap(values, i, j);
