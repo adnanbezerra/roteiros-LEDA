@@ -2,6 +2,8 @@ package sorting.divideAndConquer.quicksort3;
 
 import static util.Util.swap;
 
+import java.util.Arrays;
+
 import sorting.AbstractSorting;
 
 /**
@@ -45,14 +47,14 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends AbstractSor
 		
 		// parte responsável por fazer as comparações dentro do vetor menor, de values[left+1] até A[right-1]
 		for (int j = i - 1; j >= leftIndex + 1; j--){
-			if (values[j].compareTo(values[pivot]) >= 0){
+			if (values[j].compareTo(values[rightIndex - 1]) >= 0){
 				i--;
 				swap(values, i, j);
 			}
 		}
 
 		// agora põe o pivot em seu lugar de direito no array
-		swap(values, pivot, i);
+		swap(values, i, rightIndex - 1);
 		
 		return i;
 	}
@@ -62,19 +64,24 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends AbstractSor
 		int center = (leftIndex + rightIndex) / 2;
 
 		// este array registra os índices a serem usados nos laços a seguir
-		int[] auxilio = {leftIndex, center, rightIndex};
-
+		T[] auxilio = (T[]) new Comparable[] {values[leftIndex], values[center], values[rightIndex]};
+		
 		// selection sort responsável por organizar o array da entrada na ordem desejada, ou seja,
 		// de modo que values[left] < values[center] < values[right]
-		for (int i = 0; i < auxilio.length; i++){
-			int scout = i;
-			for(int j = 1; i < auxilio.length; i++) {
-				if (values[j].compareTo(values[scout]) > 0){
-					scout = j;
-				}
-			}
-			swap(values, i, scout);
-		}
+		// for (int i = 0; i < auxilio.length; i++){
+		// 	int scout = i;
+		// 	for(int j = 1; i < auxilio.length; i++) {
+		// 		if (values[j].compareTo(values[scout]) > 0){
+		// 			scout = j;
+		// 		}
+		// 	}
+		// 	swap(values, i, scout);
+		// }
+
+		Arrays.sort(auxilio);
+        values[leftIndex] = auxilio[0];
+        values[center] = auxilio[1];
+        values[rightIndex] = auxilio[2];
 
 		// determina e retorna o índice do novo center para o sistema
 		return ((leftIndex + rightIndex) / 2);
