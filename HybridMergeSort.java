@@ -31,12 +31,33 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	protected static int MERGESORT_APPLICATIONS = 0;
 	protected static int INSERTIONSORT_APPLICATIONS = 0;
 
+	@Override
+	public void sort(T[] array) {
+        MERGESORT_APPLICATIONS = 0;
+        INSERTIONSORT_APPLICATIONS = 0;
+		sort(array, 0, array.length - 1);
+	}
+
 	public void sort(T[] array, int leftIndex, int rightIndex) {
 		if(array.length <= SIZE_LIMIT){
-			quickSort(array, leftIndex, rightIndex);
-			
+			insertionSort(array, leftIndex, rightIndex);
+			INSERTIONSORT_APPLICATIONS++;	
 		} else {
 			mergeSort(array, leftIndex, rightIndex);
+			MERGESORT_APPLICATIONS++;
+		}
+	}
+
+	private void insertionSort(T[] array, int leftIndex, int rightIndex) {
+		int n = rightIndex;
+			 
+		for (int j = leftIndex; j < n; j++) {  
+			int i = j+1;  
+			while ( (i > leftIndex) && (array[i].compareTo(array[i-1]) < 0) ) { 
+				swap(array, i-1, i); 
+				i--;  
+			}  
+
 		}
 	}
 
@@ -99,36 +120,5 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 		return result;
 	}
 
-	private void quickSort(T[] array, int leftIndex, int rightIndex) {
 
-		if (array.length == 1)
-		return;
-
-		if (leftIndex < rightIndex){
-			int index_pivot = partition(array, leftIndex, rightIndex);
-			sort(array, leftIndex, index_pivot - 1);
-			sort(array, index_pivot + 1, rightIndex);
-		}
-	}
-
-	private int partition(T[] values, int leftIndex, int rightIndex){
-
-		int pivot = (int) values[leftIndex];
-		int i = leftIndex;
-
-		// parte responsável por fazer as comparações dentro do array
-		for (int j = leftIndex + 1; j <= rightIndex; j++){
-			if ( (int) values[j] <= pivot){
-				i++;
-				swap(values, i, j);
-			}
-		}
-
-		// realiza a troca entre o pivot e o último índice
-		swap(values, leftIndex, i);
-
-		return i;
-	}
-
-	
 }
