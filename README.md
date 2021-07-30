@@ -1,15 +1,17 @@
-# Lista de algoritmos de ordenação com uso do Comparator aqui presentes:
+# List of the sorting algorithms based on Comparator in this repository:
 
-## Do segundo roteiro:
-
+## From second lesson:
 - Quick Sort
 - Merge Sort
-- Quick Sort mediana precisa só organizar os if's
+- Quick Sort Median of three
 - Hybrid Sort
 
-## Do primeiro roteiro:
+## From first lesson:
 - Selection Sort
 - Insertion Sort
 - Bubble Sort
 
-Created for study purposes in my Data Structure classes
+## About this: 
+Created for study purposes in my Data Structure classes. To use it, you must also implement the Util
+class, which contains the .swap() method, and the AbstractSorting and Sorting classes, which are the
+abstract classes used to run the .sort() method in the algorithms.
