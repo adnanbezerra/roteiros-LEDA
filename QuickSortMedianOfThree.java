@@ -2,8 +2,6 @@ package sorting.divideAndConquer.quicksort3;
 
 import static util.Util.swap;
 
-import java.util.Arrays;
-
 import sorting.AbstractSorting;
 
 /**
@@ -65,20 +63,30 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends AbstractSor
 
 		// este array registra os índices a serem usados nos laços a seguir
 		T[] auxilio = (T[]) new Comparable[] {values[leftIndex], values[center], values[rightIndex]};
-		
-		// selection sort responsável por organizar o array da entrada na ordem desejada, ou seja,
-		// de modo que values[left] < values[center] < values[right]
-		// for (int i = 0; i < auxilio.length; i++){
-		// 	int scout = i;
-		// 	for(int j = 1; i < auxilio.length; i++) {
-		// 		if (values[j].compareTo(values[scout]) > 0){
-		// 			scout = j;
-		// 		}
-		// 	}
-		// 	swap(values, i, scout);
-		// }
 
-		Arrays.sort(auxilio);
+		// para o caso do elemento do índice 0 do array auxiliar for o maior
+		if (auxilio[0].compareTo(auxilio[1]) >= 0 && auxilio[0].compareTo(auxilio[2]) >= 0) {
+			swap(auxilio, 0, 2);
+			if (auxilio[0].compareTo(auxilio[1]) >= 0) {
+				swap(auxilio, 1, 0);
+			}
+		}
+
+		// O elemento do índice 1 do array é o maior dos três elementos.
+		else if (auxilio[1].compareTo(auxilio[0]) >= 0 && auxilio[1].compareTo(auxilio[2]) >= 0) {
+			swap(auxilio, 1, 2);
+			if (auxilio[0].compareTo(auxilio[1]) >= 0) {
+				swap(auxilio, 1, 0);
+			}
+		}
+
+		// O elemento do índice 2 do array é o maior dos três elementos.
+		else {
+			if (auxilio[0].compareTo(auxilio[1]) >= 0) {
+				swap(auxilio, 1, 0);
+			}
+		}
+
         values[leftIndex] = auxilio[0];
         values[center] = auxilio[1];
         values[rightIndex] = auxilio[2];
