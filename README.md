@@ -1,6 +1,7 @@
+## Lista de algoritmos de ordenação com uso do Comparator aqui presentes:
+
 # Do segundo roteiro:
 
-Algoritmos completos até agora:
 - Quick Sort
 - Merge Sort
 - Quick Sort mediana precisa só organizar os if's
@@ -10,3 +11,5 @@ Algoritmos completos até agora:
 - Selection Sort
 - Insertion Sort
 - Bubble Sort
+
+Created for study purposes in my Data Structure classes
