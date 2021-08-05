@@ -1,5 +1,9 @@
 # List of the sorting algorithms based on Comparator in this repository:
 
+## From third lesson:
+- Counting Sort (starting from zero)
+- Extended Counting Sort (supports negative numbers)
+
 ## From second lesson:
 - Quick Sort
 - Merge Sort
