@@ -75,6 +75,7 @@ public class QuickSelect<T extends Comparable<T>> {
 
 	private int particiona (T [] array, int inicio, int fim) {
 		
+		// Isso é um merge sort comum com particionamento por mediana de três
 		int meio = (inicio + fim)/2;
 		mediaDeTres(array, inicio, meio, fim);
 		T pivot = array[meio];
