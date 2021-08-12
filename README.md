@@ -1,4 +1,4 @@
-# List of the sorting algorithms based on Comparator in this repository:
+# List of everything that has been done in this repository:
 
 ## From third lesson:
 - Counting Sort (starting from zero)
@@ -16,6 +16,6 @@
 - Bubble Sort
 
 ## About this: 
-Created for study purposes in my Data Structure classes. To use it, you must also implement the Util
-class, which contains the .swap() method, and the AbstractSorting and Sorting classes, which are the
-abstract classes used to run the .sort() method in the algorithms.
+Created for study purposes in my Data Structure classes. To use the sorting algorithms, you must also 
+implement the Util class, which contains the .swap() method, and the AbstractSorting and Sorting classes, 
+which are the abstract classes used to run the .sort() method in the algorithms.
