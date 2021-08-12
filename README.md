@@ -1,5 +1,10 @@
 # List of everything that has been done in this repository:
 
+## From fourth lesson:
+- K Largest Order of an Array
+- Quick Select
+- Floor Binary Search
+
 ## From third lesson:
 - Counting Sort (starting from zero)
 - Extended Counting Sort (supports negative numbers)
