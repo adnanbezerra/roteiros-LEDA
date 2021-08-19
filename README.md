@@ -1,5 +1,11 @@
 # List of everything that has been done in this repository:
 
+## From fifth lesson:
+- Simple queue
+- Queue with stack
+- Circular queue
+- Simple stack
+
 ## From fourth lesson:
 - K Largest Order of an Array
 - Quick Select
